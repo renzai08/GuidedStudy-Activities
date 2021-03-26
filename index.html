@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
+        integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <title>Activity 2</title>
+</head>
+<style>
+    .header {
+        font-family: 'Courier New', Courier, monospace;
+        color: aqua;
+        text-align: center;
+    }
+
+    .newClass {
+        color: brown;
+        font-size: large;
+    }
+</style>
+
+<body>
+<div class="container">
+
+    <h1 id="div2">jquery Activity 2</h1>
+
+   
+   
+    <input type="checkbox" id="toggleData" />
+    <span>CHECK TEST</span>
+    <input type="submit" name="checkedData" id="checkedData" value=" submit " class="btn btn-success" disabled />
+    <br><br><br><br><br>
+
+
+    <table border="2" class="table table-bordered" style="width: 200px;">
+        <tr style="background-color: green">
+            <th>Name</th>
+            <th>age</th>
+        </tr>
+        <tr>
+            <td>John John Buang</td>
+            <td>20</td>
+        </tr>
+        <tr style="background-color: green"> 
+            <td>Melchor Mamayotay</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Junmar Fajardo</td>
+            <td>20</td>
+        </tr>
+        <tr style="background-color: green">
+            <td>Kerwien Lubot ang Sud an </td>
+            <td>21</td>
+        </tr>
+    </table>
+    <button id="btn-change" class="btn btn-outline-info">Change alternate Row color</button>
+    <br><br><br><br><br>
+
+
+
+    <input type="text" name="character" maxlength="15" id="display"><br>
+    <span id="remainingChar">15</span> Character(s) Remaining<br><br>
+    <p id="displayText" style="color:blueviolet;"></p>
+    <br><br><br><br><br>
+
+
+
+   
+    <button id="btn-add" class="btn btn-outline-success">Add Option</button>
+    <select name="" id="option">
+    </select>
+    <button id="btn-removeOpt" class="btn btn-danger">Remove Option</button>
+    <br><br><br><br><br>
+
+
+
+  
+    <div class="head">
+
+        <input type="button" id="saveButton" value="SAVE ME" class="btn btn-success">
+    </div>
+    <br><br><br><br><br>
+    <input type="text" id="inputF" value="" />
+    <br><br><br><br><br>
+
+  
+    <button id="btn" class="btn btn-success">Click me</button>
+    <div id="par" style="background:#505050;height:100px;width:200px;position:absolute;" class="mt-5">
+        <p class="para" style="color: azure;">This is a paragraph This is a paragraph This is a paragraph</p>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="container">
+                <button id="btn-left" class="btn btn-outline-info">Left</button>
+                <button id="btn-right" class="btn btn-outline-info">Right</button>
+                <button id="btn-up" class="btn btn-outline-info">Up</button>
+                <button id="btn-down" class="btn btn-outline-info">Down</button>
+            </div>
+            <br><br>
+            <div id="box" style="background:#464646;height:100px;width:100px;position:absolute;margin-top: -6%;"></div>
+        </div>
+    </div>
+    <br><br><br><br><br>
+    <button class="btn btn-outline-info" id="click">Scroll to Top</button>
+    
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //NUMBER 1
+            $("#click").on('click',function () {
+                $('html, body').animate({
+                    scrollTop: $("#div2").offset().top
+                }, "slow");
+            });
+            //NUMBER 2 ---------------
+            $('#toggleData').on('click', function () {
+                if ($(this).is(':checked')) {
+                    $('#checkedData').removeAttr('disabled');
+                } else {
+                    $('#checkedData').attr('disabled', true);
+                }
+            })
+            // NUMBER 3.....................
+            $('#btn-change').on('click', function () {
+                $("tr:even").css("background-color", "pink");
+                $("tr:odd").css("background-color", "cyan");
+            })
+            //Number 4....................... && NUMBER 7
+            var maxLength = 15;
+            $('#display').on('keyup',function () {
+                var pLen = maxLength - $(this).val().length;
+                $('#remainingChar').text(pLen);
+                $('#displayText').text($(this).val());
+            })
+
+            //NUMBER 6.............. && NUMBER 5
+            $('#btn-add').on('click', function () {
+                $('#option').append("<option>"+$('#displayText').text()+"</option>");
+            })
+            $('#btn-removeOpt').on('click', function () {
+                $('#option option:selected').remove();
+
+            })
+
+            //NUMBER 8
+
+            $("#saveButton").on('click', function () {
+                if (this.value == "SAVE ME") {
+                    $('#saveButton').val("UPDATE ME");
+
+                } else {
+                    $('#saveButton').val("SAVE ME");
+                }
+
+            })
+            //NUMBER 10
+            $('#inputF').on('keyup',function () {
+                this.value = this.value.replace(/[^0-9\.]/g, '');
+            })
+
+            // NUMBER 11......
+            $("#btn").on('click',function () {
+                var div = $("#par");
+                div.animate({ width: '70%', opacity: '0.4', marginLeft: '0.6in', fontSize: '3em', borderWidth: '10px' }, 5000);
+                console.log("yes")
+            });
+
+            //NUMBER 12
+            $('#btn-left').on('click',function () {
+                $('#box').animate({
+                    left: "+=100px"
+                });
+            });
+            $('#btn-right').on('click',function () {
+                $('#box').animate({
+                    left: "-=100px"
+                });
+            });
+            $('#btn-down').on('click',function () {
+                $('#box').animate({
+                    top: "+=100px"
+                });
+            });
+            $('#btn-up').on('click',function () {
+                $('#box').animate({
+                    top: "-=100px"
+                });
+            });
+
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
